@@ -1,0 +1,54 @@
+.text-center {
+  text-align: center;
+}
+
+
+
+label{
+    font-size:20px;
+}
+
+.containerMain{
+background-color:#247BA0;
+border: 8px solid #00B9AE;
+
+}
+
+.jumbotron{
+    background-color:#1B98E0;
+    color:white;
+    
+}
+
+.list-group-item{
+   
+}
+
+label{
+    color:white;
+    font-size: 30px;
+}
+
+
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+
+hr{
+    border-style: none;
+}
+
+.white{color:white;
+    font-size: 20px;}
+
+
+button.btn.btn-success{
+    background-color: #00B9AE
+}
+
+.list-group{
+    margin: auto;
+    margin-bottom: 10px;
+    width:98%;
+}

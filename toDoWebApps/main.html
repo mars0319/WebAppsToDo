@@ -1,0 +1,141 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    
+   
+    
+</head>
+<body ng-app="toDoApp">
+
+
+
+<div class="containerMain center_div "
+   ng-controller="ToDoController">
+   
+    
+    
+    
+    <!-- this div above makes it sit in the centre when at full screen -->
+    
+    
+    
+    <div class="jumbotron">
+    <div class="text-center">
+    <h1>To Do List <span class="glyphicon glyphicon-check"></span></h1> 
+        </div>
+        </div>
+    <!-- always use a span to place in glyphicon images -->
+
+<!-- beginning of the form -->
+    
+<div class="form">
+
+   <!-- declaring a form -->
+    <div class="input-group">
+    <div class="container">
+      
+       <!-- puts everything into a div so it sits where you want -->
+      
+       <span class="glyphicon glyphicon-tasks white"></span><label for="task">Task</label>
+        <input type="text" class="taskTitle" ng-model="task"> 
+        
+        
+        <hr>
+        <!-- ng-Model binds an input (or form) to property on the scope -->
+        <!-- this is the input-->
+        
+        <span class="glyphicon glyphicon-calendar white"></span>
+        <label for="date">Due Date</label>
+        <input type="date" id="dueDate" class="taskDate" ng-model="date">
+        
+        
+        <hr>
+       <span class="glyphicon glyphicon-pencil white"></span> 
+        <label for="description">Description</label>
+        <input type="text"class="taskDescription" ng-model="desc">
+        
+        <hr>
+        
+        <span class="input-group-btn">
+           <!-- makes button sit on the side of input-->
+            <button class="btn btn-success" type="button" ng-click="addTask()">
+                <span class="glyphicon glyphicon glyphicon-plus"></span> Add Task </button>
+        </span>
+                
+                
+        </div>
+    </div>
+</div>
+ 
+ <br>
+
+
+<!-- Task List Starts Here -->
+
+<ul class="list-group" ng-show="tasks.length > 0">
+  <li class="list-group-item clearfix task" ng-repeat="todo in tasks | filter: done === false track by $index" ng-class="{disabled: todo.done}"> 
+   
+   
+    <p class="lead">{{todo.task}} {{todo.date | date: 'mediumDate'}}  {{todo.desc}}</p>
+    <div>
+      <span class="pull-right">
+        <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil" 
+          ng-click="editTask($index)"></span></button>
+        <button class="btn btn-primary btn-xs" ng-show="!todo.done"><span class="glyphicon glyphicon-ok" 
+          ng-click="doneTask($index)"></span></button>
+        <button class="btn btn-primary btn-xs" ng-show="todo.done"><span class="glyphicon glyphicon-repeat" 
+          ng-click="unDoneTask($index)"></span></button>
+        <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" 
+          ng-click="deleteTask($index)"></span></button>
+      </span>
+    </div>
+  </li>
+</ul>
+<!-- Task List Ends Here -->
+ 
+ 
+<ul class="list-group" ng-show="tasks.length > 0">
+  <li class="list-group-item clearfix task" ng-repeat="todo in tasks | filter: done !== false track by $index" ng-class="{disabled: todo.done}"> 
+   
+   
+    <p class="lead">{{todo.task}} {{todo.date | date: 'mediumDate'}}  {{todo.desc}}</p>
+    <div>
+      <span class="pull-right">
+        <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil" 
+          ng-click="editTask($index)"></span></button>
+        <button class="btn btn-primary btn-xs" ng-show="!todo.done"><span class="glyphicon glyphicon-ok" 
+          ng-click="doneTask($index)"></span></button>
+        <button class="btn btn-primary btn-xs" ng-show="todo.done"><span class="glyphicon glyphicon-repeat" 
+          ng-click="unDoneTask($index)"></span></button>
+        <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" 
+          ng-click="deleteTask($index)"></span></button>
+      </span>
+    </div>
+  </li>
+</ul>
+
+
+ 
+  
+    </div>
+  
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>        
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script> 
+
+<script src="app.js"></script>    
+</body>
+</html>
+
+
+<!-- help from 
+http://time2hack.com/2014/11/todo-app-with-bootstrap-and-angularjs.html -->
+
+
+<!-- backup examples
+http://www.cssscript.com/a-nice-to-do-list-app-with-angular-js/ -->
+
